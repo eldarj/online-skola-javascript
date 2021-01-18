@@ -14,6 +14,35 @@
         </div>
         <div class="page-body">
             <p>Kreiraj novu osobu</p>
+            <form action="/my-handling-form-page" method="post">
+              <ul>
+               <li>
+                 <label for="Ime">Ime:</label>
+                 <input type="text" id="Ime" name="Ime_osobe">
+               </li>
+               <li>
+                 <label for="prezime">Prezime:</label>
+                 <input type="text" id="prezime" name="prezime_osobe">
+               </li>
+               <li>
+                 <label for="Adresa">Adresa:</label>
+                 <input type="text" id="Adresa" name="Adresa_osobe"></input>
+        
+               </li>
+               <br></br>
+               <div class="page-links">
+               <li class="button">
+
+                <a href="index.html" button onclick="alert('Uspjesno snimljeno!')"class="btn btn-primary">Save</button></a>
+                
+                                <a href="index.html" class="btn btn-secondary">Cancel</a>
+               </div>
+               
+                
+              </li>
+              
+              </ul>
+             </form>
         </div>
     </body>
 </html>
