@@ -1,0 +1,22 @@
+body {
+    background: #EEE;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.inner-body {
+    padding: 25px;
+}
+
+.page-body {
+    border: 1px solid #CCC;
+    padding: 10px;
+}
+
+.page-links {
+    margin-bottom: 25px;
+}
+
+.page-title {
+    color: #AAA;
+}
+
