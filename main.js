@@ -1,80 +1,55 @@
-function ukloniOsobu(key) {
-    console.log(key);
+function ukloniOsobu(ime) {
+    console.log(ime);
 
-    // TODO
-    // - ukloni osobu iz localstorage
-    localStorage.removeItem(key);
+    var key = 'NIZ_OSOBA';
 
-    // 1. refreshaj page
+    // 1. Dohvati NIZ_OSOBA
+    var sveOsobeJson = localStorage.getItem(key);
+    console.log(sveOsobeJson);
+
+    // 2. Izbrisi jednu osobu s ovim imenom
+    var sveOsobe = JSON.parse(sveOsobeJson);
+    var noviNiz = [];
+
+    sveOsobe.forEach(element => {
+        if (element.ime != ime) {
+            noviNiz.push(element);
+        }
+    });
+
+    // 3. Ponovo snimi "novi" niz
+    localStorage.setItem(key, JSON.stringify(noviNiz));
+
     location.reload();
-
-    // 2. refreshaj tabelu (sa npr. table.removeRow)
-}
-function DodajOsobu(sveOsobe) {
-    console.log(sveOsobe);
-
-  
-    localStorage.push(sveOsobe);
-
-    
-    location.reload();
-
-
 }
 
-var sveOsobe=[
-    {
-        ime:"Besim",
-        prezime:"Dugalic",
-        adresa:"Slavinovici"
-    },
-    {
-        ime:"Eldar",
-        prezime:"Jahijagic",
-        adresa:"Brcanska Malta"
-    },
-    {
-        ime:"Maid",
-        prezime:"Lolic",
-        adresa:"Sjenjak"
-    }
-  
+function izaberiOsobu(ime) {
+    // 1. Dohvati NIZ_OSOBA
 
-];
+    // 2. Nadji jednu osobu, gdje je ime == ime
 
+    // 3. document get element by id 'osoba-detalji'
 
-// TODO: Izbrisi ovo hard-kodirano osobe, već koristi sve iz localStorage
+    // 4. ispisi html sa vrijednostima osobe npr. ime, prezime itd.
+}
 
 var dataTableElement = document.getElementById('data-div');
-
-
 console.dir(dataTableElement);
 
 var div = document.getElementById( 'data-div' );
 
+// DOHVATI SVE OSOBE IZ LOCAL STORAGE POD KEY 'NIZ_OSOBA'
+var sveOsobe = localStorage.getItem('NIZ_OSOBA'); // KAD GOD DOHVATAMO PODATKE IZ LOCALSTORAGE; KORISTIMO JSON.parse
+sveOsobe = JSON.parse(sveOsobe);
+console.log('SVE OSOBE IZ LOCAL STORAGE');
+console.dir(sveOsobe);
+
+// PRIKAZI U HTML
 sveOsobe.forEach(element => {
     dataTableElement.innerHTML += '<tr>' 
     + '<td>' + element.ime + '</td>' 
     + '<td>' + element.prezime + '</td>' 
     + `<td>${element.adresa}</td>`
-    + `<td><button onclick="document.location=\'Edit.html\'">Edit</button> <button onclick="ukloniOsobu('${element.ime}')">Delete</button></td>`
+    + `<td><button onclick="document.location=\'detalji-osobe.html\'">Edit</button> <button onclick="ukloniOsobu('${element.ime}')">Delete</button></td>`
     + '</tr>';
 });
-
-
-// TODO: Promijeni iz getItem("Eldar") u getItem("sveOsobe")
-// DOHVATI SVE OSOBE IZ LOCAL STORAGE
-var sveOsobe = localStorage.getItem(sveOsobe, JSON.stringify(sveOsobe)); // KAD GOD DOHVATAMO PODATKE IZ LOCALSTORAGE; KORISTIMO JSON.parse
-var sveOsobe = JSON.parse(sveOsobe);
-console.log('SVE OSOBE IZ LOCAL STORAGE');
-console.dir(sveOsobe);
-console.log(sveOsobe);
-
-// PRIKAZI U HTML (TODO: PRomijeni da radi sa nizom "sveOsobe" a ne "eldar")
-
-dataTableElement.innerHTML += '<tr>'
-+ '<td>' + sveOsobe.ime + '</td>' 
-+ '<td>' + sveOsobe.prezime + '</td>' 
-+ '<td>' + sveOsobe.adresa + '</td>'
-+ `<td><button onclick="document.location=\'Edit.html\'">Edit</button> <button onclick="ukloniOsobu('${sveOsobe.ime}')">Delete</button></td>`
-+ '</tr>';
