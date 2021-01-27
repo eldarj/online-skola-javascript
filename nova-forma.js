@@ -1,12 +1,17 @@
 function submitForm() {
     var forma = document.getElementById("forma-nova-osoba");
     console.dir(forma);
-    var novaOsoba = {};
+    var novaOsoba = {}
+            for(i=0; i<novaOsoba ;i++){
+            console.log(novaOsoba[i]);
+        }
+    
     novaOsoba.ime = forma.elements.imeOsobe.value;
     novaOsoba.prezime = forma.elements.prezimeOsobe.value;
     novaOsoba.adresa = forma.elements.adresaOsobe.value;
 
     console.log(novaOsoba);
+   
 
     var success = saveToLocalStorage(novaOsoba.ime, novaOsoba)
 
@@ -16,12 +21,16 @@ function submitForm() {
         alert('Doslo je do greske');
     }
 }
+let sveOsobe=["novaOsoba.ime.value","novaOsoba.prezime.value","novaOsoba.adresa.value"];
 
+console.log(sveOsobe);
 
 function saveToLocalStorage(ime, cijeliObject) {
     localStorage.setItem(ime, JSON.stringify(cijeliObject));
     return true;
 }
+
+
 
 // TODO:
 // 1. Snimi niz osoba pod key = "sveOsobe" u localStorage
