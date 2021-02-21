@@ -72,14 +72,30 @@ izbrisiSveOsobe.onclick=function(){
         alert("Izbrisali ste sve osobe");
     }
     
-
-  
-    var Detaljno=document.getElementById("Detaljno")
-    const detaljanOpis=document.getElementById('Detaljno')
-    new URLSearchParams(window.location.search).forEach((imeOsobe,prezimeOsobe,adresaOsobe,brojGodina)=>{
-
-        detaljanOpis.append(`${imeOsobe}:${prezimeOsobe}:${adresaOsobe}:${brojGodina}`)
-        detaljanOpis.append(document.createElement('br'))
-    })
-
-   
+    function Detaljno(){
+        let {imeOsobe,prezimeOsobe,adresaOsobe,brojGodina}=JSON.parse(localStorage.getItem('niz'));
+        var osobaDetalji=document.getElementById('osobaDetalji');
+        osobaDetalji.innerHTML=`
+        <table>
+            <tbody>
+               <tr>
+                   <td>Ime osobe:</td>
+                   <td>${imeOsobe}</td>
+                   </tr> 
+                   <tr>
+                   <td>Prezime osobe:</td>
+                   <td>${prezimeOsobe}</td>
+                   </tr>
+                   <td>Adresa osobe:</td>
+                   <td>${adresaOsobe}</td>
+                   </tr>
+                   <td>Broj godina:</td>
+                   <td>${brojGodina}</td>
+                   </tr>
+            </tbody>
+            
+        </table>
+        `;
+        
+    }
+    

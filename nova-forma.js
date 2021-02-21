@@ -6,6 +6,7 @@ function submitForm() {
     novaOsoba.ime = forma.elements.imeOsobe.value;
     novaOsoba.prezime = forma.elements.prezimeOsobe.value;
     novaOsoba.adresa = forma.elements.adresaOsobe.value;
+    novaOsoba.godine=forma.elements.brojGodina.value
     /* 
     novaOsoba = {
         'ime': 'Besim',
