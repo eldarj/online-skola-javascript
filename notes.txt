@@ -1,0 +1,86 @@
+1. ID
+Šta je ID?
+ID je unique identifikator svakog elementa u html fajlu.
+npr. <div id="ime">Besim</div>
+
+2. Klasa (className)
+Šta je klasa?
+Klasa je neko ime neke css klase, koja služi za dodavanje dizajna.
+Imamo gotove klase npr. bootstrap
+<button class="btn btn-sm btn-danger">Detalji</button>
+
+3. onclick
+onclick je atribut svakog html elementa. Da mu se funkcija za izvrsavanje
+npr. <button onclick="prikaziDetalje()">Prikaži detalje</button>
+
+
+4. getElementById
+dohvata u JS odredjeni html element po id-u
+npr. 
+const mojDiv = document.getElementById('mojDivId');
+
+5. getElementById + onClick(function () {
+
+})
+
+primjer dodavanje onClick funkcije (ova varijanta je u JS i koristi document.getELementByID), 
+a moze se koristi i onclick="" direktno u html-u (referenca 3. i 4.)
+
+6. innerHTML
+innerHTML mijenja unutrasnji html elementa dohvacenog preko ID-a
+npr. 
+const mojDiv = document.getElementById('mojDivId');
+mojDiv.innerHTML = `
+    <p>Neki tekst</p>
+`;
+
+7. Nizovi
+Nizovi su [];
+npr const niz = ['Eldar', 'Besim', 'Maid'];
+ovo je niz stringova
+
+a moze biti i niz objekata
+npr const niz = [{ime: Eldar},{ime: Besim}];
+
+8. Objekti
+Objekti su {};
+Sadrze svoje atribute (key: value)
+predstavlja jednu instancu necega u realnom svijetu npr osoba
+{
+    ime: Eldar,
+    prezime: Jahijagic
+}
+
+9. Location
+Location je Javascript koji moze promijenit URL odnosno link odnosno page.
+
+10. LocalStorage
+LocalStorage je neki storage u browseru,svaki browser to ima i u njega mozemo pohraniti bilo kakve string vrijednosti.
+npr. JSON je string, niz moze biti reprezentovan kao string pomocu JSON-a
+npr. "['Eldar', 'Besim', 'Maid']"
+
+
+11. JSON, JSON.parse i JSON.stringify
+JSON je tekstualni podatak, koji moze biti prikaz bilo kojeg kompleksnijeg podatka npr niza ili objekta
+
+JSON.parse ce pretvoriti taj string u kompleksan podatak
+npr. 
+const niz = JSON.parse("['Eldar', 'Besim']");
+
+a JSON stringify ce pretvorit (obrnuto) kompleksan podatak u string
+const stringNiz = JSON.stringify(['Eldar', 'Besim']);
+
+12. array.forEach
+forEach je funkcija koja ce proci svaki element i nesto uraditi.
+niz.forEach(element => {
+    console.log(element);
+});
+
+13. array.length
+Vraća dužina niza, tj. broj elemenata u nizu npr. osoba u nizu
+
+14. '' vs. "" vs. ``
+Razliciti nacini kako napisati string
+
+15. alert i console.log
+alert je popup, console log ispis u konzolu

@@ -61,25 +61,60 @@ sveOsobe.forEach(element => {
     + '<td>' + element.prezime + '</td>' 
     + `<td>${element.adresa}</td>`
   
-    + `<td><button onclick="document.location=\'detalji-osobe.html\'">Edit</button> <button onclick="ukloniOsobu('${element.ime}')">Delete</button></td>`
+    + `<td>
+            <button 
+                class="btn btn-sm btn-primary"
+                onclick="prikaziDetalje('${element.ime}')">Prikaži detalje</button> 
+            <button 
+                class="btn btn-sm btn-danger"
+                onclick="ukloniOsobu('${element.ime}')">Delete</button>
+        </td>`
     + '</tr>';
 });
 
-  var izbrisiSveOsobe=document.getElementById("izbrisiSveOsobe")
+var izbrisiSveOsobe = document.getElementById("izbrisiSveOsobe");
 
-izbrisiSveOsobe.onclick=function(){
-        localStorage.removeItem("NIZ_OSOBA");
-        alert("Izbrisali ste sve osobe");
-    }
-    
+izbrisiSveOsobe.onclick = function() {
+    localStorage.removeItem("NIZ_OSOBA");
+    alert("Izbrisali ste sve osobe");
+}
 
-  
-    var Detaljno=document.getElementById("Detaljno")
-    const detaljanOpis=document.getElementById('Detaljno')
-    new URLSearchParams(window.location.search).forEach((imeOsobe,prezimeOsobe,adresaOsobe,brojGodina)=>{
 
-        detaljanOpis.append(`${imeOsobe}:${prezimeOsobe}:${adresaOsobe}:${brojGodina}`)
-        detaljanOpis.append(document.createElement('br'))
-    })
+function prebrojOsobe() {
+    const nizOsoba = JSON.parse(localStorage.getItem('NIZ_OSOBA'));
+    var osobaDetalji=document.getElementById('Detaljno');
+    osobaDetalji.innerHTML=`
+    <br>
+    <h4>Ukupno osoba: ${nizOsoba.length}</h4>
+    `;
+}
 
-   
+function prikaziDetalje(imeOsobe) {
+    const nizOsoba = JSON.parse(localStorage.getItem('NIZ_OSOBA'));
+    let {ime,prezime,adresa,godine} = nizOsoba.find(element => element.ime === imeOsobe);
+
+    var osobaDetalji=document.getElementById('Detaljno');
+    osobaDetalji.innerHTML=`
+    <br>
+    <h1>Detalji osobe</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ime</th>
+                <th>Prezime</th>
+                <th>Adresa</th>
+                <th>Godine</th>
+            </tr>
+        </thead>
+        <tbody>
+           <tr>
+               <td>${ime}</td>
+               <td>${prezime}</td>
+               <td>${adresa}</td>
+               <td>${godine}</td>
+            </tr>
+        </tbody>
+        
+    </table>
+    `;
+}
